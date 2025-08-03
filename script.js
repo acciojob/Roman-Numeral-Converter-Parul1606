@@ -10,7 +10,29 @@ function convertToRoman(num) {
     };
 
   //your code here
+  let result = "";
 
+  for (let [roman, value] of romanNumerals) {
+    while (num >= value) {
+      result += roman;
+      num -= value;
+    }
+  }
+
+  return result;
+
+}
+function handleConvert() {
+  const input = document.getElementById("numberInput").value;
+  const number = parseInt(input);
+
+  const resultDiv = document.getElementById("result");
+
+  if (isNaN(number)) {
+    resultDiv.innerText = "Please enter a valid number.";
+  } else {
+    resultDiv.innerText = convertToRoman(number);
+  }
 }
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
 
